@@ -1,11 +1,15 @@
 package com.inti.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -21,6 +25,12 @@ public class Soliste {
 	private String Prenom;
 	private LocalDate DateNaissance;
 	private String Nationalité;
+	
+	@ManyToMany
+	@JoinTable(name="oeuvre-soliste", 
+			joinColumns = @JoinColumn(name = "NumSoliste"),
+			inverseJoinColumns = @JoinColumn(name = "NumOeuvre"))
+private List<Oeuvre> listeOeuvre;
 	
 
 }
