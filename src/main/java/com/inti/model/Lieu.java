@@ -19,6 +19,7 @@ public class Lieu {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private String code;
 	private String nom;
 	private String adr;

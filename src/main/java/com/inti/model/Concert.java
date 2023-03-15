@@ -27,7 +27,7 @@ public class Concert {
 	private String nom;
 	
 	@ManyToOne
-	@JoinColumn(name="idLieu")
+	@JoinColumn(name="idlieu")
 	private Lieu lieu;
 	
 
