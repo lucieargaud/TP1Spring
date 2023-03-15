@@ -1,5 +1,7 @@
 package com.inti.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,7 +19,7 @@ public class Soliste {
 	private int Num;
 	private String Nom;
 	private String Prenom;
-	private String DateNaissance;
+	private LocalDate DateNaissance;
 	private String Nationalité;
 	
 
