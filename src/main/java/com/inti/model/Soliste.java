@@ -27,10 +27,7 @@ public class Soliste {
 	private LocalDate DateNaissance;
 	private String Nationalité;
 	
-	@ManyToMany
-	@JoinTable(name="oeuvre-soliste", 
-			joinColumns = @JoinColumn(name = "NumSoliste"),
-			inverseJoinColumns = @JoinColumn(name = "NumOeuvre"))
+	@ManyToMany(mappedBy = "listeSoliste")
 private List<Oeuvre> listeOeuvre;
 	
 
