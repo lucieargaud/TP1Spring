@@ -25,7 +25,7 @@ public class Soliste {
 	private String Nom;
 	private String Prenom;
 	private LocalDate DateNaissance;
-	private String Nationalité;
+	private String Nationalite;
 	
 	@ManyToMany(mappedBy = "listeSoliste")
 private List<Oeuvre> listeOeuvre;
