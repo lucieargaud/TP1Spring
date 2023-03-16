@@ -10,7 +10,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="/listeSoliste"><button>Solistes</button></a>
+<div th:each="soliste: ${listeSoliste}">
+<p th.text="${soliste}"></p>
+</div>
 
 </body>
 </html>
