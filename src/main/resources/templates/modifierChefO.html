@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Modifier Chef d'Orchestre</title>
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
+
+</head>
+<body>
+<form method="post" action="updateChefO" modelAttribute="chef">
+<div class="mb-3">
+    <input type="hidden" name="id" class="form-control" th:value="${chef.id}">
+  </div>
+<div class="mb-3">
+    <label for="idAffichage" class="form-label" th:text="Id"></label>
+    <input type="number" disabled="disabled" class="form-control" id="idAffichage" th:value="${chef.id}">
+  </div>
+  <div class="mb-3">
+    <label for="nom" class="form-label" th:text="Nom"></label>
+    <input type="text" name="nom" class="form-control" id="nom" th:value="${chef.nom}">
+  </div>
+   <div class="mb-3">
+    <label for="prenom" class="form-label" th:text="Prenom"></label>
+    <input type="text" name="prenom" class="form-control" id="prenom" th:value="${chef.prenom}">
+  </div>
+  <div class="mb-3">
+    <label for="dateNaissance" class="form-label" th:text="DateNaissance"></label>
+    <input type="text" name="dateNaissance" class="form-control" id="dateNaissance" th:value="${chef.dateNaissance}">
+  </div>
+  <div class="mb-3">
+    <label for="nationalite" class="form-label" th:text="Nationalité"></label>
+    <input type="text" name="nationalite" class="form-control" id="nationalite" th:value="${chef.nationalite}">
+  </div>
+   <div class="mb-3">
+    <label for="prix" class="form-label" th:text="Cachet"></label>
+    <input type="text" name="prix" class="form-control" id="prix" th:value="${chef.prix}">
+  </div>
+   <div class="mb-3">
+    <label for="commentaires" class="form-label" th:text="Commentaires"></label>
+    <input type="text" name="commentaires" class="form-control" id="commentaires" th:value="${chef.commentaires}">
+  </div>
+  <button type="submit" class="btn btn-primary" th:text="Envoyer"></button>
+   <button type="reset" class="btn btn-primary" th:text="Annuler"></button>
+   
+
+</form>
+</body>
+</html>

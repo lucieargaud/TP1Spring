@@ -54,7 +54,7 @@ public class SolisteController {
 	@GetMapping("modifierSoliste")
 	public String modifierSoliste(@RequestParam("id") int id, Model m)
 	{
-		m.addAttribute("Soliste", isr.findById(id).get());
+		m.addAttribute("soliste", isr.findById(id).get());
 		return "modifierSoliste";
 	}
 	

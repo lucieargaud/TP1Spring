@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import org.springframework.web.bind.annotation.RequestParam;
+
+
 import com.inti.model.Lieu;
 import com.inti.repository.ILieuRepository;
 
@@ -16,20 +19,48 @@ import com.inti.repository.ILieuRepository;
 public class LieuController {
 	@Autowired
 	ILieuRepository ilr;
-	
-	
-	@GetMapping("ajouter")
-	public String add() {
-		
+
+
+	@GetMapping("formLieu")
+	public String formLieu() {
 		return "formLieu";
 	}
 
-	@PostMapping("ajouter")
-	public String save(@ModelAttribute(name = "lieu") Lieu lieu) {
-		
-		System.out.println(lieu);
-		ilr.save(lieu);
-		return "formLieu";
-		
+	@PostMapping("saveLieu")
+	public String saveLieu(@ModelAttribute("lieu") Lieu l) {
+		ilr.save(l);
+		return "redirect:/listeLieu";
 	}
+
+	@GetMapping("listeLieu")
+	public String listeLieu(Model m) {
+		m.addAttribute("listeLieu", ilr.findAll());
+		return "listeLieu";
+	}
+	@GetMapping("getLieu")
+	public String getLieu(@RequestParam("id") int id, Model m) {
+		m.addAttribute("lieu", ilr.findById(id).get());
+		return "getLieu";
+	}
+	@GetMapping("deleteLieu")
+	public String deleteLieu(@RequestParam("id") int id) {
+		ilr.deleteById(id);
+		return "redirect:/listeLieu";
+	}
+	
+	@GetMapping("modifierLieu")
+	public String modifierLieu(@RequestParam("id") int id, Model m)
+	{
+		m.addAttribute("lieu", ilr.findById(id).get());
+		return "modifierLieu";
+	}
+	
+	@PostMapping("updateLieu") // Avec une requête Post donc bien =/= du @Get"modifLieu"
+	public String updateLieu(@ModelAttribute("lieu") Lieu l)
+	{
+		ilr.save(l); // = saveOrUpdate
+		return "redirect:/listeLieu";
+	}
+	
+
 }
