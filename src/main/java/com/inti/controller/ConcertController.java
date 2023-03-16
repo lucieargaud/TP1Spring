@@ -28,7 +28,7 @@ public class ConcertController {
 	}
 
 	@GetMapping("listeConcert")
-	public String listeconcert(Model m) {
+	public String listeConcert(Model m) {
 		m.addAttribute("listeConcert", icor.findAll());
 		return "listeConcert";
 	}
@@ -38,7 +38,7 @@ public class ConcertController {
 		return "getConcert";
 	}
 	@GetMapping("deleteConcert")
-	public String deleteconcert(@RequestParam("num") int num) {
+	public String deleteConcert(@RequestParam("num") int num) {
 		icor.deleteById(num);
 		return "redirect:/listeConcert";
 	}
