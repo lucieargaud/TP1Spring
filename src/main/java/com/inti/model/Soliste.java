@@ -21,11 +21,11 @@ public class Soliste {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Num;
-	private String Nom;
-	private String Prenom;
-	private LocalDate DateNaissance;
-	private String Nationalite;
+	private int num;
+	private String nom;
+	private String prenom;
+	private LocalDate dateNaissance;
+	private String nationalite;
 	
 	@ManyToMany(mappedBy = "listeSoliste")
 private List<Oeuvre> listeOeuvre;

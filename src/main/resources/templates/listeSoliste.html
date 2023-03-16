@@ -11,7 +11,9 @@
 </head>
 <body>
 <div th:each="soliste: ${listeSoliste}">
-<p th.text="${soliste}"></p>
+<p th:text="${soliste}">  </p>
+<a th:href="'modifSoliste/'+${soliste.num}">test</a>
+
 </div>
 
 </body>
