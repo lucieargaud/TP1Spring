@@ -14,28 +14,20 @@
 	  <div class="row">
 	    <div class="col">Num</div>
 	    <div class="col">Nom</div>
-	    <div class="col">Prenom</div>
-	    <div class="col">Date de Naissance</div>
-	    <div class="col">Nationalite</div>
-	    <div class="col">Prix</div>
-	    <div class="col">Commentaires</div>
+	    <div class="col">Date </div>
 	    <div class="col">Action</div>
 	  </div>
 	  
 	 
-		  <div class="row" th:each="chef : ${listeConcert}">
-		  <div class="col" th:text= "${chef.id}"></div>
+		  <div class="row" th:each="concert : ${listeConcert}">
+		  <div class="col" th:text= "${concert.id}"></div>
 		  
-		    <div class="col" th:text="${chef.nom}"></div>
-		    <div class="col" th:text="${chef.prenom}"></div>
-		    <div class="col" th:text="${chef.dateNaissance}"></div>
-		    <div class="col" th:text="${chef.nationalite}"></div>
-		     <div class="col" th:text="${chef.prix}"></div>
-		      <div class="col" th:text="${chef.commentaire}"></div>
+		    <div class="col" th:text="${concert.nom}"></div>
+		    <div class="col" th:text="${concert.date}"></div>
 		    <div class="col">
-		    	<a th:href="'deleteChefO/'+${ chef.id }"> <button type="button" class="btn btn-outline-danger">Supprimer</button></a>
+		    	<a th:href="'deleteConcert/'+${ concert.id }"> <button type="button" class="btn btn-outline-danger">Supprimer</button></a>
 		    	
-		    	<a th:href="'modifierChefO/'+${ chef.id }"> <button type="button" class="btn-outline-info">Modifier</button></a>
+		    	<a th:href="'modifierConcert/'+${ concert.id }"> <button type="button" class="btn-outline-info">Modifier</button></a>
 		    </div>
 		  </div>
 
