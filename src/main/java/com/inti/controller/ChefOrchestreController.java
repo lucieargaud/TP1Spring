@@ -52,7 +52,7 @@ public class ChefOrchestreController {
 	}
 	
 	@PostMapping("updateChefO") 
-	public String updateChefO(@ModelAttribute("ChefO") ChefOrchestre c)
+	public String updateChefO(@ModelAttribute("chef") ChefOrchestre c)
 	{
 		icr.save(c); 
 		return "redirect:/listeChefO";
