@@ -1,9 +1,14 @@
 package com.inti.controller;
 
+
+import java.time.LocalDate;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,33 +16,42 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.inti.model.Concert;
 import com.inti.repository.IConcertRepository;
 
+
 @Controller
+@RequestMapping("concerts")
 public class ConcertController {
-	@Autowired
-	IConcertRepository icor;
+
 	
-	@GetMapping("formConcert")
-	public String formConcert() {
-		return "formConcert";
-	}
-
-	@PostMapping("saveConcert")
-	public String saveConcert(@ModelAttribute("concert") Concert c) {
-		icor.save(c);
-		return "redirect:/listeConcert";
-	}
-
+	@Autowired IConcertRepository icr;
+	@Autowired ILieuRepository ilr;
+	
 	@GetMapping("listeConcert")
-	public String listeConcert(Model m) {
-		m.addAttribute("listeConcert", icor.findAll());
-		return "listeConcert";
+	public String afficher(Model m) {
+		m.addAttribute("listConcert", icr.findAll());
+		
+		
+		
+		
+		return "concerts";
 	}
-	@GetMapping("getConcert")
-	public String getConcert(@RequestParam("num") int num, Model m) {
-		m.addAttribute("concert", icor.findById(num).get());
-		return "getConcert";
+	@GetMapping("formConcert")
+	public String ajouter(Model m) {
+		m.addAttribute("listLieu", ilr.findAll().toArray());
+		return"formConcert";
+		
 	}
-	@GetMapping("deleteConcert")
+	@PostMapping("saveConcert")
+	public String save(Model m,@RequestParam("date") String date, @RequestParam("nom") String nom, @RequestParam("lieu") int idLieu) {
+		
+		Concert c = new Concert(LocalDate.parse(date), nom);
+		c.setLieu(ilr.findById(idLieu).get());
+		icr.save(c);
+		m.addAttribute("listConcert",icr.findAll().toArray());
+		
+		return "concerts";
+		
+	}
+  	@GetMapping("deleteConcert")
 	public String deleteConcert(@RequestParam("num") int num) {
 		icor.deleteById(num);
 		return "redirect:/listeConcert";
@@ -56,5 +70,8 @@ public class ConcertController {
 		icor.save(c); // = saveOrUpdate
 		return "redirect:/listeConcert";
 	}
+	
+	
+
 
 }

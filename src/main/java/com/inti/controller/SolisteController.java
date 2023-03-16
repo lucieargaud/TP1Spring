@@ -36,7 +36,8 @@ public class SolisteController {
 
 	@GetMapping("listeSoliste")
 	public String listeSoliste(Model m) {
-		m.addAttribute("listeSoliste", isr.findAll());
+		m.addAttribute("listeSoliste", isr.findAll().toArray());
+		System.out.println(isr.findAll());
 		return "listeSoliste";
 	}
 	@GetMapping("getSoliste")
