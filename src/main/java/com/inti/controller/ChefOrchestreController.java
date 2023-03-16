@@ -47,7 +47,7 @@ public class ChefOrchestreController {
 	@GetMapping("modifierChefO")
 	public String modifierChefO(@RequestParam("id") int id, Model m)
 	{
-		m.addAttribute("ChefO", icr.findById(id).get());
+		m.addAttribute("chef", icr.findById(id).get());
 		return "modifierChefO";
 	}
 	
