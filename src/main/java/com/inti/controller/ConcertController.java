@@ -29,11 +29,8 @@ public class ConcertController {
 	@GetMapping("listeConcert")
 	public String afficher(Model m) {
 		m.addAttribute("listConcert", icr.findAll());
-		
-		
-		
-		
-		return "concerts";
+	
+		return "listeConcert";
 	}
 	@GetMapping("formConcert")
 	public String ajouter(Model m) {
